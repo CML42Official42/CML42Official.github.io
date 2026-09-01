@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CML42 | BNB Chain Meme Token</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:rgba(212,175,55,.08);
+    filter:blur(120px);
+    border-radius:50%;
+    top:-250px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* NAV */
+
+nav{
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #262018;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:#d4af37;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:100px 0 80px;
+}
+
+.coin{
+    width:120px;
+    height:120px;
+    margin:0 auto 30px;
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        145deg,
+        #fff1a8,
+        #d4af37,
+        #8a6a12
+    );
+
+    color:#050505;
+
+    font-size:34px;
+    font-weight:1000;
+
+    border:5px solid #8d7125;
+
+    box-shadow:
+        0 0 35px rgba(212,175,55,.25),
+        inset 0 0 20px rgba(255,255,255,.4);
+}
+
+.hero h1{
+    font-size:clamp(60px,12vw,120px);
+    line-height:.9;
+    letter-spacing:-6px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#d4af37;
+}
+
+.hero p{
+    max-width:680px;
+    margin:auto;
+    color:#aaa;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.buttons{
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 30px;
+    margin:6px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:900;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.buy{
+    color:#050505;
+    background:linear-gradient(
+        135deg,
+        #fff0a3,
+        #d4af37
+    );
+    box-shadow:0 10px 35px rgba(212,175,55,.15);
+}
+
+.outline{
+    border:1px solid #5e4b1c;
+    color:#d4af37;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:80px;
+}
+
+.card{
+    background:#0d0c0a;
+    border:1px solid #292318;
+    border-radius:20px;
+    padding:26px;
+}
+
+.label{
+    color:#777;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.number{
+    font-size:28px;
+    font-weight:900;
+    color:#d4af37;
+}
+
+/* SECTION */
+
+section{
+    padding:70px 0;
+}
+
+h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.text{
+    max-width:700px;
+    color:#999;
+    line-height:1.7;
+}
+
+/* PROGRESS */
+
+.progress-box{
+    margin-top:30px;
+    padding:28px;
+}
+
+.progress{
+    width:100%;
+    height:18px;
+    background:#211d15;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:2.99%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        #8d7125,
+        #d4af37,
+        #ffe88a
+    );
+    border-radius:30px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+    color:#777;
+    font-size:13px;
+}
+
+/* CONTRACT */
+
+.contract{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    background:#0d0c0a;
+    border:1px solid #292318;
+    padding:15px;
+    border-radius:15px;
+    margin-top:25px;
+}
+
+.address{
+    flex:1;
+    color:#ccc;
+    font-family:monospace;
+    word-break:break-all;
+}
+
+.copy{
+    background:#d4af37;
+    color:#050505;
+    border:0;
+    padding:11px 17px;
+    border-radius:10px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* ROADMAP */
+
+.roadmap{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:25px;
+}
+
+.roadmap h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.roadmap p{
+    color:#888;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* COMMUNITY */
+
+.community{
+    text-align:center;
+    padding:60px 20px;
+    border:1px solid #292318;
+    border-radius:25px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,.08),
+            transparent 65%
+        ),
+        #0b0a08;
+}
+
+.community p{
+    max-width:600px;
+    margin:15px auto 25px;
+    color:#888;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:70px;
+    padding:30px 0;
+    text-align:center;
+    border-top:1px solid #292318;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding:70px 0;
+    }
+
+    .hero h1{
+        font-size:70px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .roadmap{
+        grid-template-columns:1fr;
+    }
+
+    .contract{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .copy{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">
+CML42
+</div>
+
+<div class="nav-links">
+
+<a href="#about">About</a>
+<a href="#progress">Progress</a>
+<a href="#contract">Contract</a>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="coin">
+42
+</div>
+
+<h1>
+CML<span>42</span>
+</h1>
+
+<p>
+A community-driven meme token built on BNB Chain.
+Follow the journey and watch CML42 progress toward graduation.
+</p>
+
+<div class="buttons">
+
+<a
+class="btn buy"
+href="https://four.meme/en/token/0x10729b50c363f2c4d5800c7805e7fea5097a4444"
+target="_blank">
+BUY CML42
+</a>
+
+<a
+class="btn outline"
+href="#contract">
+CONTRACT
+</a>
+
+</div>
+
+</section>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="card">
+
+<div class="label">
+Bonding Curve
+</div>
+
+<div class="number">
+2.99%
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="label">
+Graduation Target
+</div>
+
+<div class="number">
+$58,800
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="label">
+Total Supply
+</div>
+
+<div class="number">
+776.06M
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>
+About CML42
+</h2>
+
+<p class="text">
+
+CML42 is a meme token launched on BNB Chain.
+The project is currently progressing through its bonding curve,
+with the community watching its journey toward graduation.
+
+</p>
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section id="progress">
+
+<h2>
+Road to Graduation
+</h2>
+
+<p class="text">
+
+CML42 is currently at 2.99% bonding curve progress.
+The stated graduation target is a $58,800 market cap.
+
+</p>
+
+
+<div class="card progress-box">
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+<div class="progress-info">
+
+<span>
+2.99% Complete
+</span>
+
+<span>
+Target: $58,800
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTRACT -->
+
+<section id="contract">
+
+<h2>
+Contract Address
+</h2>
+
+<p class="text">
+
+Always verify the contract address before trading.
+
+</p>
+
+
+<div class="contract">
+
+<div
+class="address"
+id="address">
+
+0x10729b50c363f2c4d5800c7805e7fea5097a4444
+
+</div>
+
+<button
+class="copy"
+onclick="copyContract()">
+
+COPY
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ROADMAP -->
+
+<section>
+
+<h2>
+Roadmap
+</h2>
+
+<div class="roadmap">
+
+<div class="card">
+
+<h3>
+01 — Launch
+</h3>
+
+<p>
+Launch CML42 and build the initial community.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+02 — Growth
+</h3>
+
+<p>
+Grow community awareness and trading activity.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+03 — Graduation
+</h3>
+
+<p>
+Reach the stated graduation target and transition
+liquidity according to the launch mechanism.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COMMUNITY -->
+
+<section>
+
+<div class="community">
+
+<h2>
+Join CML42
+</h2>
+
+<p>
+Follow CML42 and become part of the community.
+Official social links can be added here.
+</p>
+
+<a
+class="btn outline"
+href="#"
+>
+X / Twitter
+</a>
+
+<a
+class="btn outline"
+href="#"
+>
+Telegram
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026 CML42
+
+<br><br>
+
+Community website for informational purposes only.
+No profit or investment returns are guaranteed.
+
+</footer>
+
+</div>
+
+
+<script>
+
+function copyContract(){
+
+const address =
+document.getElementById("address").innerText.trim();
+
+navigator.clipboard.writeText(address);
+
+const button =
+document.querySelector(".copy");
+
+button.innerText="COPIED!";
+
+setTimeout(function(){
+
+button.innerText="COPY";
+
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
